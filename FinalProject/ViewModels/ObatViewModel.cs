@@ -18,11 +18,15 @@ namespace FinalProject.ViewModels
             collection = new ObservableCollection<Obat>();
             model = new Obat();
             InsertCommand = new Command(async () => await InsertDataAsync());
+            UpdateCommand = new Command(async () => await UpdateDataAsync());
+            DeleteCommand = new Command(async () => await DeleteDataAsync());
             ReadCommand = new Command(async () => await ReadDataAsync());
             ReadCommand.Execute(null);
         }
 
         public ICommand InsertCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public ICommand ReadCommand { get; set; }
         
         public ObservableCollection<Obat> Collection
@@ -40,23 +44,10 @@ namespace FinalProject.ViewModels
         public Obat Model
         {
             get => model;
-            //{
-            //    return model;
-            //}
-            //set => SetProperty(ref model, value);
             set
             {
                 SetProperty(ref model, value);
-                //var temp = model;
-                //if (SetProperty(ref temp, value))
-                //{
-                //    model = temp;
-                //}
             }
-            //{
-            //    //model = Model;
-            //    SetProperty(ref model, value);
-            //}
         }
 
 
@@ -95,35 +86,27 @@ namespace FinalProject.ViewModels
         }
         private bool check()
         {
-            var chk = true;
-            if (model.nama_obat == null)
+            var chk = false;
+            if (model.id_obat == null)
             {
-                MessageBox.Show("obat e null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
-            } else
-            {
-                MessageBox.Show(model.nama_obat, "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("ID can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                chk = false;
             }
-            //if (model.id_obat == null)
-            //{
-            //    MessageBox.Show("ID can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    chk = false;
-            //}
-            //else if(model.nama_obat == null)
-            //{
-            //    MessageBox.Show("nama obat can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    chk = false;
-            //}
-            //else if (model.harga_satuan == null) 
-            //{
-            //    MessageBox.Show("harga satuan can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    chk = false;
-            //}else
-            //{
-            //    chk = true;
-            //}
-            return false;
+            else if (model.nama_obat == null)
+            {
+                MessageBox.Show("nama obat can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                chk = false;
+            }
+            else if (model.harga_satuan == null)
+            {
+                MessageBox.Show("harga satuan can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                chk = false;
+            }
+            else
+            {
+                chk = true;
+            }
+            return chk;
         }
 
         private async Task InsertDataAsync()
@@ -151,6 +134,63 @@ namespace FinalProject.ViewModels
                 MessageBox.Show(msg.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
+        }
+        private async Task UpdateDataAsync()
+        {
+            try
+            {
+                if (check())
+                {
+                    OpenConnection();
+                    await Task.Delay(0);
+                    var query = $"UPDATE Obat SET " +
+                        $"nama_obat = '{model.nama_obat}', "+ 
+                        $"khasiat = '{model.khasiat}', "+ 
+                        $"jumlah = '{model.jumlah}', "+
+                        $"harga_satuan = '{model.harga_satuan}' " +
+                        $"WHERE id_obat = '{model.id_obat}'";
+                    //$"VALUES('{model.id_obat}','{model.nama_obat}','{model.khasiat}','{model.jumlah}','{model.harga_satuan}')";
+                    var sqlcmd = new SQLiteCommand(query, Connection);
+
+                    var sqlresult = sqlcmd.ExecuteNonQuery();
+                    CloseConnection();
+                    await ReadDataAsync();
+                    MessageBox.Show("Sucessfully Update", "Data Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+            }
+            catch (SQLiteException msg)
+            {
+                MessageBox.Show(msg.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private async Task DeleteDataAsync()
+        {
+            try
+            {
+                if (check())
+                {
+                    OpenConnection();
+                    await Task.Delay(0);
+                    var query = $"DELETE FROM Obat " +
+                        $"WHERE id_obat = '{model.id_obat}'";
+                    //$"VALUES('{model.id_obat}','{model.nama_obat}','{model.khasiat}','{model.jumlah}','{model.harga_satuan}')";
+                    var sqlcmd = new SQLiteCommand(query, Connection);
+
+                    var sqlresult = sqlcmd.ExecuteNonQuery();
+                    CloseConnection();
+                    await ReadDataAsync();
+                    MessageBox.Show("Sucessfully Deleted", "Delete", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+            }
+            catch (SQLiteException msg)
+            {
+                MessageBox.Show(msg.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using FinalProject.Views;
 
 namespace FinalProject
 {
@@ -13,5 +14,12 @@ namespace FinalProject
     /// </summary>
     public partial class App : Application
     {
+        public static Home Home;
+        
+        private void Application_Startup(Object sender, StartupEventArgs e)
+        {
+            Home = new Home();
+            Home.Show();
+        }
     }
 }

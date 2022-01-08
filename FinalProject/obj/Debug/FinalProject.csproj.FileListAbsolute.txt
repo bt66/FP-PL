@@ -22,3 +22,5 @@ F:\kuliah\Smester 3\Pemrograman Lanjut\FinalProject\FinalProject\obj\Debug\Final
 F:\kuliah\Smester 3\Pemrograman Lanjut\FinalProject\FinalProject\obj\Debug\FinalProject.csproj.CopyComplete
 F:\kuliah\Smester 3\Pemrograman Lanjut\FinalProject\FinalProject\obj\Debug\FinalProject.exe
 F:\kuliah\Smester 3\Pemrograman Lanjut\FinalProject\FinalProject\obj\Debug\FinalProject.pdb
+F:\kuliah\Smester 3\Pemrograman Lanjut\FinalProject\FinalProject\obj\Debug\Views\Home.g.cs
+F:\kuliah\Smester 3\Pemrograman Lanjut\FinalProject\FinalProject\obj\Debug\Views\Home.baml
