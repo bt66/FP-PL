@@ -77,12 +77,17 @@
     <Compile Include="Models\Obat.cs" />
     <Compile Include="Models\Pembeli.cs" />
     <Compile Include="Models\Transaksi.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ObatViewModel.cs" />
     <Compile Include="ViewModels\PembeliViewModel.cs" />
     <Compile Include="ViewModels\TransaksiViewModel.cs" />
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +102,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

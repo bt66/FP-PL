@@ -14,12 +14,14 @@ namespace FinalProject
     /// </summary>
     public partial class App : Application
     {
-        public static Home Home;
-        
+        public static MainWindow MainWindow;
+        public static string SessionUid;
+        public static string SessionUser;
         private void Application_Startup(Object sender, StartupEventArgs e)
         {
-            Home = new Home();
-            Home.Show();
+            SessionUid = "";
+            SessionUser = "";
+            //new LoginDialog().show();
         }
     }
 }
