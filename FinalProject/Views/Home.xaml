@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="HomePage" Height="450" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="757" ItemsSource="{Binding Collection}" SelectedItem="{Binding Model}"/>
-
+        <DataGrid HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="372" ItemsSource="{Binding CollectionObat}" SelectedItem="{Binding Model}"/>
+        <DataGrid HorizontalAlignment="Left" Height="200" Margin="399,10,0,0" VerticalAlignment="Top" Width="383" ItemsSource="{Binding CollectionPembeli}" SelectedItem="{Binding Model}"/>
         <Label Content="Nama Obat" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,-0.049"/>
         <Label Content="Khasiat" HorizontalAlignment="Left" Margin="34,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,-0.049"/>
         <Label Content="Jumlah" HorizontalAlignment="Left" Margin="35,322,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,-0.049"/>

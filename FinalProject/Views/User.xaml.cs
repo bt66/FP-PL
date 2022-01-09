@@ -10,27 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FinalProject.ViewModels;
-using FinalProject.Models;
 
 namespace FinalProject.Views
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for User.xaml
     /// </summary>
-    public partial class Home : Window
+    public partial class User : UserControl
     {
-        private ObatViewModel vm;
-        private PembeliViewModel vm1;
-        public Home()
+        public User()
         {
             InitializeComponent();
-            vm = new ObatViewModel();
-            DataContext = vm;
-
         }
     }
 }
-
-

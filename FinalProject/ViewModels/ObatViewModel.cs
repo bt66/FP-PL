@@ -29,7 +29,7 @@ namespace FinalProject.ViewModels
         public ICommand DeleteCommand { get; set; }
         public ICommand ReadCommand { get; set; }
         
-        public ObservableCollection<Obat> Collection
+        public ObservableCollection<Obat> CollectionObat
         {
             get
             {
@@ -58,6 +58,32 @@ namespace FinalProject.ViewModels
             set => SetProperty(ref _test, value);
         }
 
+        // check data
+        private bool check()
+        {
+            var chk = false;
+            if (model.id_obat == null)
+            {
+                MessageBox.Show("ID can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                chk = false;
+            }
+            else if (model.nama_obat == null)
+            {
+                MessageBox.Show("nama obat can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                chk = false;
+            }
+            else if (model.harga_satuan == null)
+            {
+                MessageBox.Show("harga satuan can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                chk = false;
+            }
+            else
+            {
+                chk = true;
+            }
+            return chk;
+        }
+
         private async Task ReadDataAsync()
         {
             OpenConnection();
@@ -84,31 +110,7 @@ namespace FinalProject.ViewModels
             }
             CloseConnection();
         }
-        private bool check()
-        {
-            var chk = false;
-            if (model.id_obat == null)
-            {
-                MessageBox.Show("ID can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-                chk = false;
-            }
-            else if (model.nama_obat == null)
-            {
-                MessageBox.Show("nama obat can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-                chk = false;
-            }
-            else if (model.harga_satuan == null)
-            {
-                MessageBox.Show("harga satuan can't null !", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
-                chk = false;
-            }
-            else
-            {
-                chk = true;
-            }
-            return chk;
-        }
-
+        
         private async Task InsertDataAsync()
         {
             try
