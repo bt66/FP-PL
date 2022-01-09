@@ -170,21 +170,27 @@ namespace FinalProject.ViewModels
         {
             try
             {
-                if (check())
+
+                if (MessageBox.Show($"yakin ingin menghapus '{model.id_obat}' ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    OpenConnection();
-                    await Task.Delay(0);
-                    var query = $"DELETE FROM Obat " +
-                        $"WHERE id_obat = '{model.id_obat}'";
-                    //$"VALUES('{model.id_obat}','{model.nama_obat}','{model.khasiat}','{model.jumlah}','{model.harga_satuan}')";
-                    var sqlcmd = new SQLiteCommand(query, Connection);
+                    {
+                        OpenConnection();
+                        await Task.Delay(0);
+                        var query = $"DELETE FROM Obat " +
+                            $"WHERE id_obat = '{model.id_obat}'";
+                        //$"VALUES('{model.id_obat}','{model.nama_obat}','{model.khasiat}','{model.jumlah}','{model.harga_satuan}')";
+                        var sqlcmd = new SQLiteCommand(query, Connection);
 
-                    var sqlresult = sqlcmd.ExecuteNonQuery();
-                    CloseConnection();
-                    await ReadDataAsync();
-                    MessageBox.Show("Sucessfully Deleted", "Delete", MessageBoxButton.OK, MessageBoxImage.Information);
+                        var sqlresult = sqlcmd.ExecuteNonQuery();
+                        CloseConnection();
+                        await ReadDataAsync();
+                        MessageBox.Show("Sucessfully Deleted", "Delete", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Hapus di batalkan", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (SQLiteException msg)
             {

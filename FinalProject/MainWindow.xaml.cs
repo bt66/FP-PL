@@ -22,17 +22,15 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObatViewModel vm;
+        private TransaksiViewModel vm2;
         public MainWindow()
         {
             InitializeComponent();
-            vm = new ObatViewModel();
-            DataContext = vm;
+            vm2 = new TransaksiViewModel();
+            DataContext = vm2;
         }
 
-        private void InputButtonClick(object sender, RoutedEventArgs e)
-        {
-            vm.Model = new Obat();
-        }
+        
+
     }
 }

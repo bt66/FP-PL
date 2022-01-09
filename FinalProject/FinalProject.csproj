@@ -79,6 +79,8 @@
     <Compile Include="Models\Transaksi.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ObatViewModel.cs" />
+    <Compile Include="ViewModels\PembeliViewModel.cs" />
+    <Compile Include="ViewModels\TransaksiViewModel.cs" />
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>

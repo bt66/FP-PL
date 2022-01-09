@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1153">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="757" ItemsSource="{Binding Collection}" SelectedItem="{Binding Model}"/>
+        <DataGrid HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="336" ItemsSource="{Binding Collection}" SelectedItem="{Binding Model}"/>
         
         <Label Content="Nama Obat" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,-0.049"/>
         <Label Content="Khasiat" HorizontalAlignment="Left" Margin="34,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.451,-0.049"/>
@@ -19,9 +19,14 @@
         <TextBox x:Name="TxtJumlah" HorizontalAlignment="Left" Height="23" Margin="95,322,0,0" TextWrapping="Wrap" Text="{Binding Model.jumlah, Mode=TwoWay}" VerticalAlignment="Top" Width="85"/>
         <TextBox x:Name="TxthargaSatuan" HorizontalAlignment="Left" Height="23" Margin="95,369,0,0" TextWrapping="Wrap" Text="{Binding Model.harga_satuan, Mode=TwoWay}" VerticalAlignment="Top" Width="251"/>
         <TextBox x:Name="TxtIdObat" HorizontalAlignment="Left" Height="23" Margin="241,325,0,0" TextWrapping="Wrap" Text="{Binding Model.id_obat, Mode=TwoWay}" VerticalAlignment="Top" Width="105"/>
-        <Button x:Name="BtnInput" Command="{Binding InsertCommand}" Click="InputButtonClick" Content="INPUT" HorizontalAlignment="Left" Margin="648,236,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.097,0.008" Height="156"/>
+        <Button x:Name="BtnInput" Command="{Binding InsertCommand}" Content="INPUT" HorizontalAlignment="Left" Margin="648,236,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.097,0.008" Height="156"/>
         <Button x:Name="BtnUpdate" Content="UPDATE" HorizontalAlignment="Left" Margin="499,236,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="0.097,0.008" Height="156"/>
         <Button x:Name="BtnDelete" Content="DELETE" HorizontalAlignment="Left" Margin="362,236,0,0" VerticalAlignment="Top" Width="118" RenderTransformOrigin="0.097,0.008" Height="156"/>
+        <Label Content="id obat" HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="jumlah" HorizontalAlignment="Left" Margin="379,90,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="379,41,0,0" TextWrapping="Wrap" Text="{Binding ModelTransaksi.id_obat, Mode=TwoWay}" VerticalAlignment="Top" Width="197"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="379,121,0,0" TextWrapping="Wrap" Text="{Binding ModelTransaksi.jumlah, Mode=TwoWay}" VerticalAlignment="Top" Width="197"/>
+        <Button Content="Hitung" Command="{Binding InsertTransaksiCommand}" HorizontalAlignment="Left" Margin="605,40,0,0" VerticalAlignment="Top" Width="100" Height="104"/>
 
     </Grid>
 
